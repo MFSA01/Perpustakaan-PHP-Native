@@ -1,4 +1,3 @@
-// Konfirmasi sebelum menghapus data.
 var confirmButtons = document.querySelectorAll('[data-confirm]');
 confirmButtons.forEach(function (button) {
     button.addEventListener('click', function (event) {
@@ -10,20 +9,38 @@ confirmButtons.forEach(function (button) {
     });
 });
 
-// Menampilkan cover baru sebelum form dikirim.
 var coverInputs = document.querySelectorAll('[data-cover-preview]');
 coverInputs.forEach(function (input) {
     input.addEventListener('change', function () {
         var file = input.files[0];
         var preview = document.querySelector(input.dataset.coverPreview);
+        var nameSpan = document.getElementById('coverFileName');
 
-        if (file && preview) {
-            preview.src = URL.createObjectURL(file);
+        if (file) {
+            if (preview) {
+                preview.src = URL.createObjectURL(file);
+            }
+            if (nameSpan) {
+                nameSpan.textContent = file.name;
+                nameSpan.style.color = '#7ED3A5';
+            }
         }
     });
 });
 
-// Tombol mata: melihat atau menyembunyikan password.
+var segmentedItems = document.querySelectorAll('.segmented-item');
+segmentedItems.forEach(function (item) {
+    item.addEventListener('click', function () {
+        var parent = item.closest('.segmented-control');
+        if (parent) {
+            parent.querySelectorAll('.segmented-item').forEach(function (sib) {
+                sib.classList.remove('active');
+            });
+            item.classList.add('active');
+        }
+    });
+});
+
 var passwordButtons = document.querySelectorAll('[data-password-toggle]');
 passwordButtons.forEach(function (button) {
     button.addEventListener('click', function () {
@@ -47,7 +64,6 @@ passwordButtons.forEach(function (button) {
     });
 });
 
-// Membuka menu samping pada layar kecil.
 var menuButton = document.querySelector('[data-sidebar-toggle]');
 if (menuButton) {
     menuButton.addEventListener('click', function () {

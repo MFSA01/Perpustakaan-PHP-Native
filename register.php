@@ -61,9 +61,36 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             </div>
         </div>
         <p class="eyebrow">ANGGOTA BARU</p>
-        <h1>Buat akun anggota</h1><?php foreach ($errors as $error): ?><div class="alert danger"><?= e($error) ?></div><?php endforeach; ?><form method="post" class="form-stack"><label>Nama lengkap<input name="nama_lengkap" value="<?= e($_POST['nama_lengkap'] ?? '') ?>" required></label><label>Username<input name="username" value="<?= e($_POST['username'] ?? '') ?>" required></label><label>Email<input type="email" name="email" value="<?= e($_POST['email'] ?? '') ?>" required></label><label>No. telepon <input name="no_telepon" value="<?= e($_POST['no_telepon'] ?? '') ?>"></label><label>Password<span class="password-field"><input type="password" name="password" id="password" required><button class="password-toggle" type="button" data-password-toggle="password" aria-label="Tampilkan password" title="Tampilkan password"><i class="fa-solid fa-eye"></i></button></span></label><label>Konfirmasi password<span class="password-field"><input type="password" name="konfirmasi_password" id="konfirmasi_password" required><button class="password-toggle" type="button" data-password-toggle="konfirmasi_password" aria-label="Tampilkan konfirmasi password" title="Tampilkan password"><i class="fa-solid fa-eye"></i></button></span></label><button class="btn primary" type="submit">Daftar akun</button></form>
+        <h1>Buat akun anggota</h1>
+        <?php foreach ($errors as $error): ?>
+            <div class="alert danger">
+                <?= e($error) ?>
+            </div>
+        <?php endforeach; ?>
+        <form method="post" class="form-stack">
+            <label>Nama lengkap<input name="nama_lengkap" value="<?= e($_POST['nama_lengkap'] ?? '') ?>" required></label>
+            <label>Username<input name="username" value="<?= e($_POST['username'] ?? '') ?>" required></label>
+            <label>Email<input type="email" name="email" value="<?= e($_POST['email'] ?? '') ?>" required></label>
+            <label>No. telepon <input name="no_telepon" value="<?= e($_POST['no_telepon'] ?? '') ?>"></label>
+            <label>Password<span class="password-field">
+                    <input type="password" name="password" id="password" required>
+                    <button class="password-toggle" type="button" data-password-toggle="password" aria-label="Tampilkan password" title="Tampilkan password">
+                        <i class="fa-solid fa-eye"></i>
+                    </button>
+                </span>
+            </label>
+            <label>Konfirmasi password<span class="password-field">
+                    <input type="password" name="konfirmasi_password" id="konfirmasi_password" required>
+                    <button class="password-toggle" type="button" data-password-toggle="konfirmasi_password" aria-label="Tampilkan konfirmasi password" title="Tampilkan password">
+                        <i class="fa-solid fa-eye"></i>
+                    </button>
+                </span>
+            </label>
+            <button class="btn primary" type="submit">Daftar akun</button>
+        </form>
         <p class="auth-note">Sudah punya akun? <a href="login.php">Masuk</a></p>
-    </section><script src="assets/js/app.js"></script>
+    </section>
+    <script src="assets/js/app.js"></script>
 </body>
 
 </html>

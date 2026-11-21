@@ -56,7 +56,23 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         </div>
         <p class="eyebrow">AKSES SISTEM</p>
         <h1>Masuk ke perpustakaan</h1>
-        <p class="muted">Kelola koleksi atau temukan bacaan berikutnya.</p><?php if ($error): ?><div class="alert danger"><?= e($error) ?></div><?php endif; ?><form method="post" class="form-stack"><label>Username<input name="username" value="<?= isset($_POST['username']) ? e($_POST['username']) : '' ?>" autofocus required></label><label>Password<span class="password-field"><input type="password" name="password" id="password" required><button class="password-toggle" type="button" data-password-toggle="password" aria-label="Tampilkan password" title="Tampilkan password"><i class="fa-solid fa-eye"></i></button></span></label><button class="btn primary" type="submit">Masuk</button></form>
+        <p class="muted">Kelola koleksi atau temukan bacaan berikutnya.</p>
+        <?php if ($error): ?>
+            <div class="alert danger">
+                <?= e($error) ?>
+            </div>
+        <?php endif; ?>
+        <form method="post" class="form-stack">
+            <label>Username<input name="username" value="<?= isset($_POST['username']) ? e($_POST['username']) : '' ?>" autofocus required></label>
+            <label>Password
+                <span class="password-field">
+                    <input type="password" name="password" id="password" required>
+                    <button class="password-toggle" type="button" data-password-toggle="password" aria-label="Tampilkan password" title="Tampilkan password">
+                        <i class="fa-solid fa-eye"></i>
+                    </button>
+                </span>
+            </label><button class="btn primary" type="submit">Masuk</button>
+        </form>
         <p class="auth-note">Belum punya akun? <a href="register.php">Daftar sebagai anggota</a></p>
         <!-- <p class="credentials">Admin: <b>admin</b> / <b>admin</b></p> -->
     </section>

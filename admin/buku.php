@@ -1,6 +1,5 @@
 <?php
 
-
 define('APP_ROOT', '..');
 require __DIR__ . '/../includes/auth.php';
 require_role('admin');
@@ -36,9 +35,16 @@ require __DIR__ . '/../includes/header.php'; ?>
         <h2>Daftar koleksi</h2>
     </div><a class="btn primary" href="buku_tambah.php">Tambah buku</a>
 </div>
-<form class="filters" method="get"><input name="cari" value="<?= e($cari) ?>" placeholder="Cari judul, penulis, kode"><select name="kategori">
-        <option value="0">Semua kategori</option><?php while ($k = mysqli_fetch_assoc($kategoriList)): ?><option value="<?= $k['id_kategori'] ?>" <?= $kategori === $k['id_kategori'] ? 'selected' : '' ?>><?= e($k['nama_kategori']) ?></option><?php endwhile; ?>
-    </select><button class="btn secondary">Filter</button></form>
+<form class="filters" method="get">
+    <input name="cari" value="<?= e($cari) ?>" placeholder="Cari judul, penulis, kode">
+    <select name="kategori">
+        <option value="0">Semua kategori</option>
+        <?php while ($k = mysqli_fetch_assoc($kategoriList)): ?>
+            <option value="<?= $k['id_kategori'] ?>" <?= $kategori === $k['id_kategori'] ? 'selected' : '' ?>><?= e($k['nama_kategori']) ?></option>
+        <?php endwhile; ?>
+    </select>
+    <button class="btn secondary">Filter</button>
+</form>
 <section class="panel table-wrap">
     <table>
         <thead>
@@ -48,16 +54,23 @@ require __DIR__ . '/../includes/header.php'; ?>
                 <th>Kategori</th>
                 <th>Kondisi</th>
                 <th>Stok</th>
-                <th></th>
+                <th>Aksi</th>
             </tr>
         </thead>
-        <tbody><?php while ($row = mysqli_fetch_assoc($buku)): ?><tr>
+        <tbody>
+            <?php while ($row = mysqli_fetch_assoc($buku)): ?>
+                <tr>
                     <td><img class="thumb" src="../uploads/covers/<?= e($row['cover']) ?>" alt=""></td>
                     <td><b><?= e($row['judul']) ?></b><small><?= e($row['kode_buku']) ?> · <?= e($row['penulis']) ?></small></td>
                     <td><?= e($row['nama_kategori']) ?></td>
                     <td><?= e($row['kondisi']) ?></td>
                     <td><?= e((string)$row['stok']) ?></td>
-                    <td class="actions"><a href="buku_edit.php?id=<?= $row['id_buku'] ?>">Edit</a><a class="danger-link" data-confirm="Hapus buku ini?" href="buku_hapus.php?id=<?= $row['id_buku'] ?>">Hapus</a></td>
-                </tr><?php endwhile; ?></tbody>
+                    <td class="actions">
+                        <a href="buku_edit.php?id=<?= $row['id_buku'] ?>">Edit</a>
+                        <a class="danger-link" data-confirm="Hapus buku ini?" href="buku_hapus.php?id=<?= $row['id_buku'] ?>">Hapus</a>
+                    </td>
+                </tr>
+            <?php endwhile; ?>
+        </tbody>
     </table>
 </section><?php require __DIR__ . '/../includes/footer.php';

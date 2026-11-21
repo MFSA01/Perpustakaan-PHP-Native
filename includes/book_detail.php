@@ -26,4 +26,32 @@ if ($role_folder == 'user') {
     else $buttonText = 'Ajukan peminjaman';
 }
 ?>
-<section class="detail-book"><div class="detail-cover"><img src="../uploads/covers/<?= e($book['cover']) ?>" alt="Cover <?= e($book['judul']) ?>"></div><div class="detail-info"><a class="back-link" href="<?= $role_folder == 'admin' ? 'tampilan_user.php' : 'katalog.php' ?>"><i class="fa-solid fa-arrow-left"></i> Kembali ke katalog</a><span class="catalog-category"><?= e($book['nama_kategori']) ?></span><h2><?= e($book['judul']) ?></h2><p class="detail-author"><i class="fa-regular fa-pen-to-square"></i> <?= e($book['penulis']) ?></p><div class="detail-meta"><span><i class="fa-solid fa-barcode"></i> <?= e($book['kode_buku']) ?></span><span><i class="fa-solid fa-building"></i> <?= e($book['penerbit']) ?></span><span><i class="fa-regular fa-calendar"></i> <?= format_tanggal_id($book['tanggal_terbit']) ?></span><span><i class="fa-solid fa-cubes-stacked"></i> <?= e((string) $book['stok']) ?> tersedia</span></div><div class="detail-action"><?php if ($role_folder == 'user') { ?><form method="post" action="katalog.php"><input type="hidden" name="id_buku" value="<?= $book['id_buku'] ?>"><button class="btn primary" <?= !$canBorrow ? 'disabled' : '' ?>><i class="fa-solid fa-bookmark"></i> <?= $buttonText ?></button></form><?php } else { ?><a class="btn secondary" href="buku_edit.php?id=<?= $book['id_buku'] ?>"><i class="fa-solid fa-pen"></i> Edit buku</a><?php } ?></div></div></section><section class="panel synopsis-panel"><p class="eyebrow">TENTANG BUKU</p><h2>Sinopsis</h2><p><?= nl2br(e($book['sinopsis'])) ?></p></section>
+<section class="detail-book">
+    <div class="detail-cover">
+        <img src="../uploads/covers/<?= e($book['cover']) ?>" alt="Cover <?= e($book['judul']) ?>">
+    </div>
+    <div class="detail-info">
+        <div class="detail-top-nav">
+            <a class="btn-back" href="<?= $role_folder == 'admin' ? 'tampilan_user.php' : 'katalog.php' ?>">
+                <i class="fa-solid fa-arrow-left"></i>
+                <span>Kembali ke Katalog</span>
+            </a>
+            <span class="detail-category-badge">
+                <i class="fa-solid fa-tags"></i>
+                <?= e($book['nama_kategori']) ?>
+            </span>
+        </div>
+        <h2><?= e($book['judul']) ?></h2>
+        <p class="detail-author">
+            <i class="fa-regular fa-pen-to-square"></i>
+            <?= e($book['penulis']) ?>
+        </p>
+        <div class="detail-meta"><span><i class="fa-solid fa-barcode"></i> <?= e($book['kode_buku']) ?></span><span><i class="fa-solid fa-building"></i> <?= e($book['penerbit']) ?></span><span><i class="fa-regular fa-calendar"></i> <?= format_tanggal_id($book['tanggal_terbit']) ?></span><span><i class="fa-solid fa-cubes-stacked"></i> <?= e((string) $book['stok']) ?> tersedia</span></div>
+        <div class="detail-action"><?php if ($role_folder == 'user') { ?><form method="post" action="katalog.php"><input type="hidden" name="id_buku" value="<?= $book['id_buku'] ?>"><button class="btn primary" <?= !$canBorrow ? 'disabled' : '' ?>><i class="fa-solid fa-bookmark"></i> <?= $buttonText ?></button></form><?php } else { ?><a class="btn secondary" href="buku_edit.php?id=<?= $book['id_buku'] ?>"><i class="fa-solid fa-pen"></i> Edit buku</a><?php } ?></div>
+    </div>
+</section>
+<section class="panel synopsis-panel">
+    <p class="eyebrow">TENTANG BUKU</p>
+    <h2>Sinopsis</h2>
+    <p><?= nl2br(e($book['sinopsis'])) ?></p>
+</section>

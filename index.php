@@ -1,6 +1,5 @@
 <?php
 
-
 define('APP_ROOT', '');
 require __DIR__ . '/includes/auth.php';
 if (empty($_SESSION['id_user'])) {
