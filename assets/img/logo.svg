@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64" fill="none">
+  <!-- Soft Maroon Rounded Base -->
+  <rect width="64" height="64" rx="16" fill="#8B1E2D"/>
+  <rect x="1" y="1" width="62" height="62" rx="15" stroke="#A42436" stroke-width="2" stroke-opacity="0.6"/>
+
+  <!-- Open Book Silhouette (Crisp, Elegant, Minimalist) -->
+  <!-- Left Pages -->
+  <path d="M32 44.5C27 41.5 20.5 41.5 15 43.5V20C20.5 18 27 18 32 21V44.5Z" fill="#F2EFEA"/>
+  <!-- Right Pages -->
+  <path d="M32 44.5C37 41.5 43.5 41.5 49 43.5V20C43.5 18 37 18 32 21V44.5Z" fill="#FFFFFF"/>
+  
+  <!-- Book Spine Center Fold -->
+  <path d="M32 21V45.5" stroke="#6E1723" stroke-width="2.5" stroke-linecap="round"/>
+  
+  <!-- Subtle Internal Page Accent Lines -->
+  <path d="M19 26C23 24.8 27.5 25 30 26.2" stroke="#B4B0AC" stroke-width="1.5" stroke-linecap="round"/>
+  <path d="M19 31C23 29.8 27.5 30 30 31.2" stroke="#B4B0AC" stroke-width="1.5" stroke-linecap="round"/>
+  <path d="M19 36C23 34.8 27.5 35 30 36.2" stroke="#B4B0AC" stroke-width="1.5" stroke-linecap="round"/>
+
+  <path d="M45 26C41 24.8 36.5 25 34 26.2" stroke="#B4B0AC" stroke-width="1.5" stroke-linecap="round"/>
+  <path d="M45 31C41 29.8 36.5 30 34 31.2" stroke="#B4B0AC" stroke-width="1.5" stroke-linecap="round"/>
+  <path d="M45 36C41 34.8 36.5 35 34 36.2" stroke="#B4B0AC" stroke-width="1.5" stroke-linecap="round"/>
+  
+  <!-- Gold Bookmark Ribbon in Center -->
+  <path d="M32 17V26L34.5 23.5L37 26V17" fill="#E9C478"/>
+</svg>
